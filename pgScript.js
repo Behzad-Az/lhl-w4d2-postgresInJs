@@ -1,7 +1,5 @@
 const arg = (process.argv[2]).toLowerCase();
 
-
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -34,9 +32,6 @@ queryDb(sql, [arg], function(err, result) {
   if (err) console.error(err);
   console.log(result.rows);
 });
-
-
-
 
 // client.connect((err) => {
 //   if (err) {
