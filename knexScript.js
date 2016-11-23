@@ -1,5 +1,3 @@
-const arg = (process.argv[2]).toLowerCase();
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -15,14 +13,11 @@ const config = {
   ssl      : settings.ssl
 };
 
-const knex = require('knex')({
-  client: 'pg',
-  connection: config
-});
+const famousPerson = [{
+  first_name: 'Michael',
+  last_name: 'Jordan',
+  birthdate: '1955-10-28'
+}];
 
-knex.select('first_name', 'last_name').from('famous_people')
-    .where(knex.raw('LOWER("first_name") = ?', arg))
-    .asCallback(function (err, rows) {
-      if (err) console.error(err);
-      console.log(rows);
-    });
+const addPerson = require('./knexAddPerson')(config, famousPerson, 'famous_people');
+const delPerson = require('./knexDelPerson')(config, 'famous_people', 'first_name', 'Ben');
