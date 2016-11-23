@@ -1,7 +1,7 @@
 const arg = (process.argv[2]).toLowerCase();
 
 const settings = require('./settings');
-const queryDb = require('./db')(config);
+const queryDb = require('./pgGetDb')(config);
 const sql =
   'SELECT first_name, last_name ' +
   'FROM famous_people ' +
