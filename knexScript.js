@@ -1,7 +1,3 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
 const settings = require('./settings');
 
 const config = {
@@ -19,5 +15,8 @@ const famousPerson = [{
   birthdate: '1955-10-28'
 }];
 
+// Adds in current entry. Prints out the the list.
 const addPerson = require('./knexAddPerson')(config, famousPerson, 'famous_people');
-const delPerson = require('./knexDelPerson')(config, 'famous_people', 'first_name', 'Ben');
+
+// deletes given entry if found. Prints out the list.
+const delPerson = require('./knexDelPerson')(config, 'famous_people', 'first_name', 'Michael');
